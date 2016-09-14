@@ -1,0 +1,21 @@
+Project list
+
+<table class="table table-striped">
+<thead>
+  <tr>
+<th>title</th>
+<th>description</th>
+<th> actin</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @project.each do |f| %>
+<tr>
+<td><%= f.title  %></td>
+<td><%= raw f.description.first(250) %></td>
+<td><%= link_to "Edit", project_path(f.id) %></td>
+</tr>
+<% end %>
+</tbody>
+</table>

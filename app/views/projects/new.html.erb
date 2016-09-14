@@ -1,0 +1,13 @@
+<%= form_for @project, class:"form-horizontal" do |f| %>
+ <div class="form-group">
+<%= f.label :title %>
+<%= f.text_field :title, class: 'form-control' %>
+</div>
+ <div class="form-group">
+<%= f.label :description %>
+<%= f.cktext_area :description, as: :bootsy, class: 'form-control' %>
+</div>
+<div>
+  <%= f.submit "create Project", class:"btn btn-default", role: "button" %>
+</div>
+<% end %>

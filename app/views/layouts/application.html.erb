@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PmTool2</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div>
+    <%= link_to "Home", root_path %>
+    |
+    <%= link_to "About", about_path %>
+    |
+    <%= link_to "Projects", projects_path %>
+    |
+    <%= link_to "New Project", new_project_path %>
+
+  </div>
+<hr>
+<% if flash[:notice] %>
+<div class="alert alert-success" role="alert">
+ <%= flash[:notice] %>
+</div>
+<% end %>
+<% if flash[:alert] %>
+<div class="alert alert-danger" role="alert">
+ <%= flash[:alert] %>
+</div>
+
+<% end %>
+  <br>
+  <div class="container">
+    <%= yield %>
+  </div>
+  </body>
+</html>

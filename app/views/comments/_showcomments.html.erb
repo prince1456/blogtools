@@ -1,0 +1,9 @@
+  <% count = 1 %>
+<% disc.comments.each do |f| %>
+<div class="container comment-box">
+
+
+<span style="font-size: 10  px  "> <%= count %>.</span> <%= f.body %>
+<% count +=1 %>
+</div>
+<% end %>

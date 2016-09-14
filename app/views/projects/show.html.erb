@@ -1,0 +1,49 @@
+<center>
+    <h1><%= @project.title %></h1>
+</center>
+<p><%= raw @project.description %></p>
+<%= link_to "Edit", edit_project_path(@project) %>
+<%= link_to "Delete", project_path(@project.id), method: :delete %>
+<hr>
+
+<% if @project.discussions.any? %>
+<center><h4>Disscussion</h4></center>
+<% c= 0 %>
+  <% @project.discussions.each do |disc| %>
+    <div><% c +=1 %>
+      <h2><%= disc.title %> </h2><span style="font-size:10px "> Discussion #<%= c %></span>
+      <span><%= link_to "Delete", project_discussion_path(@project, disc), class: "btn btn-info btn-sm", method: :delete, data: {confirm: "Are you sure?"} %></span>
+    </div>
+    <br>
+    <div style="float:right, float:clear">
+      <p><%= raw disc.description %></p>
+    </div>
+    <div>
+
+      <%= render partial: "comments/form", locals: {disc: disc} %>
+    </div>
+
+    <div>
+      <%= render partial: "comments/showcomments", locals: {disc: disc} %>
+
+    </div>
+  <% end %>
+<% end %>
+
+
+
+
+                    <%= form_for [@project, @discussion],class: "form-group" do |f| %>
+                    <div>
+                        <%= f.label :title %>
+                        <%= f.text_field :title, class: "form-control" %>
+                    </div>
+                    <div>
+                        <%= f.label :description %>
+                        <%= f.cktext_area :description, class: "form-control",row: "3" %>
+                    </div>
+
+                    <%= f.submit "Submit a Discussion", class: "btn btn-default" %>
+
+
+    <%end %>
